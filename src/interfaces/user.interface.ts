@@ -5,6 +5,7 @@ interface UserInterface extends Document{
     password: string;
     email: string;
     createdDate: Date;
+    comparePassword(candidatePassword: string): Promise<Boolean>;
 }
 
 export default UserInterface;

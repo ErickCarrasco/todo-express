@@ -1,5 +1,6 @@
 import {Schema, model} from 'mongoose';
 import UserInterface from '../interfaces/user.interface';
+import bcrypt from "bcrypt";
 
 const UserSchema = new Schema({
     name:{
@@ -20,6 +21,13 @@ const UserSchema = new Schema({
         default: Date.now
     }
 })
+
+UserSchema.methods.comparePassword = async function(candidatePassword:string): Promise<boolean>{
+    const user = this as UserInterface;
+
+    return bcrypt.compare(candidatePassword, user.password).catch((e: any) => false);
+};
+
 
 const User = model<UserInterface>('user', UserSchema);
 
