@@ -13,13 +13,14 @@ export async function createUser(input:DocumentDefinition<Omit<UserInterface,'cr
 
 export async function validatePassword({email, password}:{email:string, password:string}){
     const user = await User.findOne({email});
-    
+    console.log(user)
     if(!user){
         return false;
     }
+    console.log(password)
 
     const isValid = await user.comparePassword(password)
-
+    
     if(!isValid) return false;
 
     return user.toJSON();
