@@ -21,6 +21,6 @@ const UserSchema = new Schema({
     }
 })
 
-const TaskForm = model<UserInterface>('user', UserSchema);
+const User = model<UserInterface>('user', UserSchema);
 
-export default TaskForm;
+export default User;
