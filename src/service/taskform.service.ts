@@ -7,8 +7,8 @@ export async function CreateTask(input:DocumentDefinition<Omit<TaskFormInteface,
     return task.toJSON()
 }
 
-export async function findTask(query: FilterQuery<TaskFormInteface>, options: QueryOptions = {lean:true}){
-    return TaskForm.findOne(query, {}, options);
+export async function findTask(query: FilterQuery<TaskFormInteface>){
+    return TaskForm.find(query).lean();
 }
 
 export async function setCompleteTask(query: FilterQuery<TaskFormInteface>, update: UpdateQuery<TaskFormInteface>, options: QueryOptions){

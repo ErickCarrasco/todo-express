@@ -250,13 +250,18 @@
 					"response": []
 				},
 				{
-					"name": "Get Product",
+					"name": "Get Task",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"const newAccessToken = responseHeaders['x-access-token']",
+									"",
+									"if(newAccessToken){",
+									"    console.log('Set new access token')",
+									"postman.setEnvironmentVariable(\"accessToken\", newAccessToken);",
+									"}"
 								],
 								"type": "text/javascript"
 							}
@@ -266,26 +271,28 @@
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth":{
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"title\": \"A post title\",\n    \"body\": \"Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
+
 						"url": {
-							"raw": "{{endpoint}}/api/products/{{productId}}",
+							"raw": "{{endpoint}}/api/tasks",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
 								"api",
-								"products",
-								"{{productId}}"
+								"tasks",
+								"{{task}}"
 							]
 						}
 					},
