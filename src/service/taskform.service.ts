@@ -22,10 +22,10 @@ export async function searchSpecificTask({task}:{task:string}){
 }
 
 export async function setCompleteTask(query: FilterQuery<TaskFormInteface>, update: UpdateQuery<TaskFormInteface>, options: QueryOptions){
-    return TaskForm.findOneAndUpdate(query, update, options);
+    return TaskForm.findByIdAndUpdate(query, update, options);
 }
 
 export async function deleteTask(query: FilterQuery<TaskFormInteface>){
-    console.log("query",query)
+    
     return TaskForm.findByIdAndDelete(query);
 }

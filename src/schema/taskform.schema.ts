@@ -8,21 +8,13 @@ export const createNewTaskSchema = object({
     })
 })
 
-const body = object({
-    
-})
 
-const params = object({
-    params: object({
-        isChecked: boolean({
-            required_error: 'error on the system'
+export const updateTaskSchema = object({
+    body: object({
+        task:string({
+            required_error: 'Task is required'
         })
     })
-})
-
-
-export const updateTask = object({
-    params
 })
 
 export const deleteTaskSchema = object({
@@ -43,7 +35,7 @@ export const getTaskSchema = object({
 
 
 export type createNewTaskInput = TypeOf<typeof createNewTaskSchema>
-export type updateTaskInput = TypeOf<typeof updateTask>
+export type updateTaskInput = TypeOf<typeof updateTaskSchema>
 export type deleteTaskInput = TypeOf<typeof deleteTaskSchema>
 export type getTaskInput = TypeOf<typeof getTaskSchema>
 
