@@ -1,8 +1,9 @@
 import {Document} from 'mongoose';
+import UserInterface from './user.interface'
 
 interface TaskFormInteface extends Document{
     task: string;
-    userId: string;
+    userId:  UserInterface["_id"];
     isChecked: boolean;
     createdDate: Date;
 }

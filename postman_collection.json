@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "d3a34203-6dac-480e-8aac-0dce44241f83",
-		"name": "REST API Tutorial",
+		"name": "TO-DO API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -194,7 +194,7 @@
 							"script": {
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
-									"postman.setEnvironmentVariable(\"productId\", jsonData.productId);",
+									"postman.setEnvironmentVariable(\"task\", jsonData.task);",
 									"",
 									"",
 									"const newAccessToken = responseHeaders['x-access-token']",
@@ -229,7 +229,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"Canon EOS 1500D DSLR Camera with 18-55mm Lens\",\n    \"description\": \"Designed for first-time DSLR owners who want impressive results straight out of the box, capture those magic moments no matter your level with the EOS 1500D. With easy to use automatic shooting modes, large 24.1 MP sensor, Canon Camera Connect app integration and built-in feature guide, EOS 1500D is always ready to go.\",\n    \"price\": 879.99,\n    \"image\": \"https://i.imgur.com/QlRphfQ.jpg\"\n}",
+							"raw": "{\n    \"task\": \"Finish Express Tutorial\"\n    }",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -237,13 +237,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/api/products",
+							"raw": "{{endpoint}}/api/tasks",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
 								"api",
-								"products"
+								"tasks"
 							]
 						}
 					},
