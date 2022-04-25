@@ -2,7 +2,7 @@ const keys = {
     port: 3000,
     host: "localhost",
     dbUri: "mongodb://localhost:27017/todo-ts-exp",
-    accessTokenTtl: `30m`,
+    accessTokenTtl: `10m`,
     refreshTokenTtl: `1y`,
     publicKey: `-----BEGIN PUBLIC KEY-----
 MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCm7RraUnmvG1fxc/cMWeu4Nn7l
