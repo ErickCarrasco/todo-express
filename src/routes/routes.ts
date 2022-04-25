@@ -5,8 +5,8 @@ import validate from "../middleware/validateResource";
 import { createSessionSchema } from "../schema/session.schema";
 import {createUserSchema} from "../schema/user.schema";
 import requireUser from "../middleware/requireUser";
-import { createNewTaskSchema, getTaskSchema } from "../schema/taskform.schema";
-import { CreateTaskHandler, getTaskHandler } from "../controller/taskform.controller";
+import { createNewTaskSchema, deleteTaskSchema, getTaskSchema } from "../schema/taskform.schema";
+import { CreateTaskHandler, deleteTaskHandler, getTaskHandler } from "../controller/taskform.controller";
 
 function routes(app: Express){
     app.get('/healthcheck', (req: Request, res: Response) =>res.sendStatus(200))
@@ -20,6 +20,8 @@ function routes(app: Express){
     app.post('/api/tasks', [requireUser, validate(createNewTaskSchema)], CreateTaskHandler)
 
     app.get('/api/tasks', requireUser , getTaskHandler)
+
+    app.delete('/api/tasks', [requireUser, validate(deleteTaskSchema)], deleteTaskHandler)
 }
 
 

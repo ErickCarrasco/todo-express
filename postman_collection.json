@@ -291,8 +291,7 @@
 							],
 							"path": [
 								"api",
-								"tasks",
-								"{{task}}"
+								"tasks"
 							]
 						}
 					},
@@ -397,7 +396,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\": \"A post title\",\n    \"body\": \"Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text Some HTML text\"\n}",
+							"raw": "{\n    \"task\": \"Insert task\"}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -405,14 +404,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{endpoint}}/api/products/{{productId}}",
+							"raw": "{{endpoint}}/api/tasks",
 							"host": [
 								"{{endpoint}}"
 							],
 							"path": [
 								"api",
-								"products",
-								"{{productId}}"
+								"tasks"
 							]
 						}
 					},

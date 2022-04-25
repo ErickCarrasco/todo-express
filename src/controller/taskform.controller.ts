@@ -1,6 +1,6 @@
 import {Request, Response} from 'express'
 import { createNewTaskInput } from '../schema/taskform.schema';
-import { CreateTask, findTask, deleteTask} from '../service/taskform.service';
+import { CreateTask, findTask, deleteTask, searchSpecificTask} from '../service/taskform.service';
 
 export async function CreateTaskHandler(req: Request<{}, {}, createNewTaskInput["body"]>, res: Response){
     const userId = res.locals.user._id
@@ -26,16 +26,23 @@ export async function UpdateTask(req: Request, res: Response){
 
 export async function deleteTaskHandler(req: Request, res: Response){
     const userId = res.locals.user._id
-    const update = req.body.task
+    const findTask = await searchSpecificTask(req.body)
 
-    const task = await findTask(update)
-
-    if(!task){
+    console.log(findTask)
+   
+    if(!findTask){
         return res.sendStatus(404)
+    }
+    //console.log(userId)
+    //console.log(findTask.userId.toString())
+    if(userId !== findTask.userId.toString()){
+        console.log("ILLEGAL DELETION DETECTED")
+        return res.sendStatus(403)
+        
     }
 
 
-
-    await deleteTask({update});
+    await deleteTask(findTask._id);
+    return res.sendStatus(200)
 
 }
