@@ -5,7 +5,7 @@ dotenv.config({ path: 'var.env', debug: true });
 const keys = {
     port: process.env.PORT || 3000,
     host: process.env.HOST ||'0.0.0.0',
-    dbUri: process.env.DB_URL||"mongodb://localhost:27017/todo-ts-exp",
+    dbUri: process.env.MONGO_URL||"mongodb://localhost:27017/todo-ts-exp",
     accessTokenTtl: `10m`,
     refreshTokenTtl: `1y`,
     publicKey: `-----BEGIN PUBLIC KEY-----
